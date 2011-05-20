@@ -47,5 +47,12 @@ public class SeqTestCase {
 		);
 	}
 
-
+	@Test
+	public void testMapEmptyCollection() {
+		Seq<Integer> seq = new Seq<Integer>();
+		assertThat(
+			eval.strict(seq.map(Any.<Integer>show()), Collections.<String>emptyList()),
+			is(equalTo(Collections.<String>emptyList()))
+		);
+	}
 }

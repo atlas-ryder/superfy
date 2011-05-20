@@ -4,7 +4,6 @@
  */
 
 package superfy.functions;
-import java.util.logging.Logger;
 
 /**
  *
