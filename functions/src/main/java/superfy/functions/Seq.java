@@ -5,56 +5,33 @@
 
 package superfy.functions;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
-
 /**
  *
  * @author haswellj
  */
-public final class Seq<T> implements Iterable<T> {
+public interface Seq<T> extends Iterable<T> {
 
-	private final Iterable<T> iterator;
-	public Seq(T...elements) {
-		this(Arrays.asList(elements));
-	}
+	/**
+	 * Map this sequence to another via the specified transformation.
+	 * This operation preserves the following identities:
+	 *
+	 * Given:
+	 * Seq a = [1,2,3]
+	 * a.map(Any.identity()).equals(a)
+	 * a.map(f).map(f.inverse()).equals(a)
+	 * @param <U>
+	 * @param transformation
+	 * @return
+	 */
+	<U> Seq<U> map(final UnaryFunction<U, T> transformation);
 
-	public Seq(Iterable<T> iterator) {
-		this.iterator = iterator == null ? Collections.<T>emptyList() : iterator;
-	}
+	/**
+	 *
+	 * @param <U>
+	 * @param transformation
+	 * @return
+	 */
+	<U> U foldl(U acc, final BinaryFunction<U, U, T> transformation);
 
-
-	public <U> Seq<U> map(final UnaryFunction<U, T> transformation) {
-		final Iterator<T> iter = iterator();
-		return new Seq<U>(new Iterable<U>(){
-			@Override
-			public Iterator<U> iterator() {
-				return new Iterator<U>() {
-					@Override
-					public boolean hasNext() {
-						return iter.hasNext();
-					}
-
-					@Override
-					public U next() {
-						return transformation.apply(iter.next());
-					}
-
-					@Override
-					public void remove() {
-						throw new UnsupportedOperationException(
-							"Map Iterator won't allow changes to map cardinality"
-						);
-					}
-				};
-			}
-		});
-	}
-
-	@Override
-	public Iterator<T> iterator() {
-		return iterator.iterator();
-	}
 
 }
