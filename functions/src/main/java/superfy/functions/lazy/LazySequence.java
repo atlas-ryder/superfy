@@ -27,12 +27,6 @@ final class LazySequence<T> implements Seq<T>, Lazy {
 		this.iterator = iterator == null ? Collections.<T>emptyList() : iterator;
 	}
 
-	/**
-	 *
-	 * @param <U>
-	 * @param transformation
-	 * @return
-	 */
 	@Override
 	public <U> Seq<U> map(final UnaryFunction<U, T> transformation) {
 		final Iterator<T> iter = iterator();
@@ -61,7 +55,7 @@ final class LazySequence<T> implements Seq<T>, Lazy {
 	}
 
 	@Override
-	public <U> U foldl(U acc, BinaryFunction<U, U, T> transformation) {
+	public <U> U foldl(final U acc, final BinaryFunction<U, U, T> transformation) {
 		U accumulatedValue = acc;
 		for(T item : this) {
 			accumulatedValue = transformation.apply(accumulatedValue, item);
@@ -69,9 +63,24 @@ final class LazySequence<T> implements Seq<T>, Lazy {
 		return accumulatedValue;
 	}
 
+
+	@Override
+	public <U> U foldr(final U acc, final BinaryFunction<U, U, T> transformation) {
+		return foldRight(acc, transformation, iterator());
+	}
+
+	private <U> U foldRight(final U acc, final BinaryFunction<U, U, T> t, final Iterator<T> iter) {
+		if(iter.hasNext()) {
+			final T next = iter.next();
+			return t.apply(foldRight(acc, t, iter), next);
+		}
+		return acc;
+	}
+
 	@Override
 	public Iterator<T> iterator() {
 		return iterator.iterator();
 	}
+
 
 }
