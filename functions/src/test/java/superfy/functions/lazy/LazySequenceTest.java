@@ -16,7 +16,9 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({
 	LazySequenceMapTest.class,
 	LazySequenceFoldLeftTest.class,
-	LazySequenceFoldRightTest.class
+	LazySequenceFoldRightTest.class,
+	LazySequenceOperationsTest.class,
+	LazySequenceScanLeftTest.class 
 })
 public class LazySequenceTest {
 }

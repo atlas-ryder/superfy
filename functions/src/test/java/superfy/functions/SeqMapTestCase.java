@@ -60,4 +60,12 @@ public abstract class SeqMapTestCase extends SeqTestCase {
 		);
 	}
 
+	@Test
+	public void ensureMapIsInvertibleOnce() {
+		Seq<Integer> intSeq = seq(1,2,3,4);
+		Seq<String> stringSeq = seq("1", "2", "3", "4");
+		assertThat()
+
+	}
+
 }

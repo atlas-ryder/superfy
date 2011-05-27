@@ -36,7 +36,27 @@ public interface Seq<T> extends Iterable<T> {
 	 */
 	<U> U foldl(U acc, final BinaryFunction<U, U, T> transformation);
 
+	/**
+	 * Fold this sequence into the accumulated value via the specified transformation.
+	 * This fold operates from right to left.
+	 * @param <U>
+	 * @param acc
+	 * @param transformation
+	 * @return
+	 */
 	<U> U foldr(U acc, final BinaryFunction<U, U, T> transformation);
+
+	<U> Seq<U> scanl(U acc, final BinaryFunction<U, U, T> transformation);
+
+
+	@Override 
+	public boolean equals(Object other);
+
+	@Override 
+	public int hashCode();
+
+	@Override
+	public String toString();
 
 
 }

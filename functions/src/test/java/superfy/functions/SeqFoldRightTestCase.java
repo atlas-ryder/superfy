@@ -8,7 +8,6 @@ import java.util.LinkedList;
 import java.util.Arrays;
 import java.util.List;
 import superfy.functions.types.Int;
-import org.junit.Ignore;
 import java.util.Collections;
 import org.junit.Test;
 import static org.junit.Assert.*;

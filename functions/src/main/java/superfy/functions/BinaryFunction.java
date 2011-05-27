@@ -4,7 +4,6 @@
  */
 
 package superfy.functions;
-
 /**
  *
  * @author haswellj

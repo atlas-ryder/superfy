@@ -7,7 +7,6 @@ package superfy.functions;
 
 import java.util.Arrays;
 
-
 /**
  *
  * @author haswellj
@@ -19,7 +18,10 @@ public abstract class SeqTestCase {
 	}
 
 
+
+
 	protected abstract <T> Seq<T> seq(Iterable<T> items);
+
 
 
 }

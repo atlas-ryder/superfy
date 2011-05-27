@@ -6,6 +6,7 @@
 package superfy.functions.types;
 
 import superfy.functions.BinaryFunction;
+import superfy.functions.UnaryFunction;
 
 /**
  *
@@ -28,5 +29,9 @@ public final class Int {
 
 	public static BinaryFunction<Integer, Integer, Integer> add() {
 		return add;
+	}
+
+	public static UnaryFunction<Option<Integer>, String> read() {
+		return null;
 	}
 }
