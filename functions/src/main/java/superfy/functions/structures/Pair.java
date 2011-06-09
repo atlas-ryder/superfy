@@ -65,6 +65,20 @@ public final class Pair<T, U> {
 		return new Pair(fst, snd);
 	}
 
+	/**
+	 * Shallow-copy the specified pair into a new pair
+	 * @param <T> the type of the first element
+	 * @param <U> the type of the second element
+	 * @param pair the pair to copy
+	 * @return a copy of the pair containing the first pair's elements
+	 * @throws IllegalArgumentException if {@code pair} is null
+	 */
+	@Nonnull(when = When.ALWAYS)
+	@Factory(returns = Pair.class)
+	public static <T, U> Pair<T, U> pair(@Nonnull(when = When.ALWAYS) Pair<T, U> pair) {
+		return new Pair(pair);
+	}
+
 	@Override
 	@SuppressWarnings("RefusedBequest")
 	public boolean equals(Object o) {

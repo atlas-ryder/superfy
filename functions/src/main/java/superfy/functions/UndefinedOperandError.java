@@ -4,10 +4,10 @@
  */
 package superfy.functions;
 
+import superfy.functions.structures.Pair;
 import javax.annotation.Nonnull;
 import java.util.Collections;
 import java.util.List;
-import javax.annotation.Nullable;
 import static javax.annotation.meta.When.*;
 /**
  * This error indicates that a function is not defined for a set of operands.  Usually,
@@ -17,19 +17,19 @@ import static javax.annotation.meta.When.*;
  */
 public class UndefinedOperandError extends RuntimeException {
 
-	private final List<Object> offendingOperands;
+	private final List<Pair<Class<?>, ?>> offendingOperands;
 
 
 	public UndefinedOperandError(
 		String message, 
-		List<Object> offendingOperands
+		List<Pair<Class<?>, ?>> offendingOperands
 	) {
 		super(message);
 		this.offendingOperands = offendingOperands;
 	}
 
 	public UndefinedOperandError(String message) {
-		this(message, Collections.emptyList());
+		this(message, Collections.<Pair<Class<?>, ?>>emptyList());
 	}
 
 
@@ -38,7 +38,7 @@ public class UndefinedOperandError extends RuntimeException {
 	 * @return a list of the offending operands
 	 */
 	@Nonnull(when = ALWAYS)
-	public List<Object> getOffendingOperands() {
+	public List<Pair<Class<?>, ?>> getOffendingOperands() {
 		return offendingOperands;
 	}
 }

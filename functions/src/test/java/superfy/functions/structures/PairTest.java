@@ -162,6 +162,19 @@ public class PairTest {
 		assertThat(pair, is(not(equalTo(anyNotPair))));
 	}
 
+
+	@Test(expected = IllegalArgumentException.class)
+	public void ensureConstructingPairFromNullPairThrowsException() {
+		Pair pair = new Pair(null);
+	}
+	
+	@Test(expected = IllegalArgumentException.class) 
+	public void ensureConstructingPairViaPairFactoryFromNullThrowsException() {
+		Pair.pair(null);
+	}
+	
+
+
 	@Test 
 	public void ensureNullFstAndNonNullSndReferentialEqualityIsReflexive() {
 		final Object nullFst = null;
@@ -211,6 +224,7 @@ public class PairTest {
 		assertThat(p1, is(equalTo(p3)));
 	}
 
+	@Test
 	public void ensureNullFstAndNonNullSndHashCodeIsEqual() {
 		final Object nullFst = null; 
 		final Object anySnd = new Object();
@@ -219,6 +233,7 @@ public class PairTest {
 		assertThat(p1.hashCode(), is(equalTo(p2.hashCode())));
 		assertThat(p2.hashCode(), is(equalTo(p1.hashCode())));
 	}
+	@Test
 	public void ensureNullSndAndNonNullFstHashCodeIsEqual() {
 		final Object anyFst = new Object();
 		final Object nullSnd = null; 
@@ -228,6 +243,7 @@ public class PairTest {
 		assertThat(p2.hashCode(), is(equalTo(p1.hashCode())));
 	}
 
+	@Test
 	public void ensureHashingFunctionsCorrectly() {
 		Map<Pair<String, String>, String> m1 = new HashMap();
 		final String p1FstString = "first string";
