@@ -24,6 +24,16 @@ public class PairTest {
 		assertThat(new Pair(anyFst, anySnd).fst, is(equalTo(anyFst)));
 		assertThat(new Pair(anyFst, anySnd).snd, is(equalTo(anySnd)));
 	}
+
+	@Test
+	public void ensureSwapReversesElements() {
+		final Object anyFstNotEqualToSnd = 1;
+		final Object anySndNotEqualToFst = 15;
+		final Pair p1 = new Pair(anyFstNotEqualToSnd, anySndNotEqualToFst);
+		final Pair p2 = p1.swap();
+		assertThat(p1.fst, is(equalTo(p2.snd)));
+		assertThat(p1.snd, is(equalTo(p2.fst)));
+	}
 	@Test
 	public void ensurePairConstructorPlacesFstInFstAndSndInSnd() {
 		final Object fstDistinctFromSnd = new Object();

@@ -13,7 +13,8 @@ import superfy.common.annotations.advice.Factory;
  * This class defines a 2-tuple.  This class is iterable, can contain nulls, and immutable.
  * Equality of a tuple is based on the elements as well as the type of the tuple.  
  * Equality is also order-dependent.
- * 
+ * @param <T> The type of the first element in this pair
+ * @param <U> The type of the second element in this pair
  * @author haswellj
  */
 public final class Pair<T, U> {
@@ -31,6 +32,10 @@ public final class Pair<T, U> {
 		this.snd = snd;
 	}
 
+	/**
+	 * Create a shallow copy of this pair
+	 * @param pair the pair to shallowly copy
+	 */
 	public Pair(@Nonnull(when = When.ALWAYS) Pair<T, U> pair) {
 		if(pair == null) {
 			throw new IllegalArgumentException(
@@ -49,6 +54,16 @@ public final class Pair<T, U> {
 	@Nullable 
 	public U getSnd() {
 		return snd;
+	}
+
+	/**
+	 * Create and return a new pair with this pair's fst as its snd and this
+	 * pair's snd with its fst
+	 * @return a pair with its elements swapped
+	 */
+	@Nonnull(when = When.ALWAYS) 
+	public Pair<U, T> swap() {
+		return new Pair(snd, fst);
 	}
 
 	/**
@@ -122,4 +137,5 @@ public final class Pair<T, U> {
 	private String typeForElement(Object o) {
 		return o == null ? "null" : o.getClass().getName();	
 	}
+
 }
