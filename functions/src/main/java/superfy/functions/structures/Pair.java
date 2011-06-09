@@ -120,6 +120,6 @@ public final class Pair<T, U> {
 	}
 
 	private String typeForElement(Object o) {
-		return o == null ? "null" : fst.getClass().getName();	
+		return o == null ? "null" : o.getClass().getName();	
 	}
 }
