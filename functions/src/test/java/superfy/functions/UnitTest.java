@@ -6,6 +6,7 @@ package superfy.functions;
 
 
 
+import superfy.common.annotations.advice.Singleton;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
@@ -33,6 +34,11 @@ public class UnitTest {
 	@Test(expected = IllegalAccessException.class)
 	public void ensureUnitCannotBeInstantiatedViaConstructor() throws Exception {
 		Unit.class.newInstance();
+	}
+
+	@Test
+	public void ensureUnitIsAnnotatedWithSingletonAnnotation() {
+		assertThat(Unit.class.isAnnotationPresent(Singleton.class), is(true));
 	}
 
 }

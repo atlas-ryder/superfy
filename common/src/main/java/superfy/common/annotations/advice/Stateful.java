@@ -4,10 +4,13 @@
  */
 package superfy.common.annotations.advice;
 
+import javax.annotation.meta.When;
+
 /**
  *
  * @author haswellj
  */
 public @interface Stateful {
-	State value() default State.UNKNOWN; 
+	When value() default When.NEVER; 
+	
 }
