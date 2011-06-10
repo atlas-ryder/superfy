@@ -272,7 +272,6 @@ public class PairTest {
 		assertThat(m1.get(p1), is(equalTo(expectedValue)));
 		assertThat(m1.get(p2), is(equalTo(expectedValue)));
 		assertThat(m1.get(p3), is(nullValue()));
-
 	}
 
 }

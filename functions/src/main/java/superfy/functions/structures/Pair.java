@@ -63,7 +63,7 @@ public final class Pair<T, U> {
 	 */
 	@Nonnull(when = When.ALWAYS) 
 	public Pair<U, T> swap() {
-		return new Pair(snd, fst);
+		return pair(snd, fst);
 	}
 
 	/**
